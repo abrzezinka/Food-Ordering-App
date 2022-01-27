@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/homePage">
+
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.foodorderingapp.fragments.HomePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_to_cathegoriesList"
+            app:destination="@id/cathegoriesList" />
+        <action
+            android:id="@+id/action_homePage_to_deliveryOrTakeoutChoice"
+            app:destination="@id/deliveryOrTakeoutChoice" />
+    </fragment>
+    <fragment
+        android:id="@+id/cathegoriesList"
+        android:name="com.example.foodorderingapp.fragments.CategoriesList"
+        android:label="fragment_cathegories_list"
+        tools:layout="@layout/fragment_cathegories_list" >
+        <action
+            android:id="@+id/action_cathegoriesList_to_productsList"
+            app:destination="@id/productsList" />
+        <argument
+            android:name="IsOrder"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryOrTakeoutChoice"
+        android:name="com.example.foodorderingapp.DeliveryOrTakeoutChoice"
+        android:label="fragment_delivery_or_takeout_choice"
+        tools:layout="@layout/fragment_delivery_or_takeout_choice" >
+        <action
+            android:id="@+id/action_deliveryOrTakeoutChoice_to_takeawayOption"
+            app:destination="@id/takeawayOption" />
+        <action
+            android:id="@+id/action_deliveryOrTakeoutChoice_to_deliveryOption"
+            app:destination="@id/deliveryOption" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeawayOption"
+        android:name="com.example.foodorderingapp.TakeawayOption"
+        android:label="fragment_takeaway_option"
+        tools:layout="@layout/fragment_takeaway_option" >
+        <action
+            android:id="@+id/action_takeawayOption_to_cathegoriesList"
+            app:destination="@id/cathegoriesList" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryOption"
+        android:name="com.example.foodorderingapp.DeliveryOption"
+        android:label="fragment_delivery_option"
+        tools:layout="@layout/fragment_delivery_option" >
+        <action
+            android:id="@+id/action_deliveryOption_to_cathegoriesList"
+            app:destination="@id/cathegoriesList" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsList"
+        android:name="com.example.foodorderingapp.ProductsList"
+        android:label="fragment_products_list"
+        tools:layout="@layout/fragment_products_list" >
+        <argument
+            android:name="IsOrder"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+</navigation>

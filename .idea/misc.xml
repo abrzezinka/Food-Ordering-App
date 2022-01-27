@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/activity_main.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/categories_adapter.xml" value="0.21435185185185185" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/cathegories_adapter.xml" value="0.3328125" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_cathegories_list.xml" value="0.3328125" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_delivery_option.xml" value="0.2722222222222222" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_delivery_or_takeout_choice.xml" value="0.2722222222222222" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_home_page.xml" value="0.27355072463768115" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_products_list.xml" value="0.2722222222222222" />
+        <entry key="..\:/Users/tosia/Programowanie/android-projects/FoodOrderingApp/app/src/main/res/layout/fragment_takeaway_option.xml" value="0.2722222222222222" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
