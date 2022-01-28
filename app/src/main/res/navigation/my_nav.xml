@@ -55,19 +55,18 @@
         android:id="@+id/deliveryOption"
         android:name="com.example.foodorderingapp.DeliveryOption"
         android:label="fragment_delivery_option"
-        tools:layout="@layout/fragment_delivery_option" >
+        tools:layout="@layout/fragment_delivery_option">
         <action
             android:id="@+id/action_deliveryOption_to_cathegoriesList"
             app:destination="@id/cathegoriesList" />
     </fragment>
     <fragment
         android:id="@+id/productsList"
-        android:name="com.example.foodorderingapp.ProductsList"
-        android:label="fragment_products_list"
-        tools:layout="@layout/fragment_products_list" >
+        android:name="com.example.foodorderingapp.fragments.ProductsList"
+        android:label="fragment_products_list">
         <argument
             android:name="IsOrder"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 </navigation>

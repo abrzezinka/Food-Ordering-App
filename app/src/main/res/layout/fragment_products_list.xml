@@ -8,11 +8,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="391dp"
-        android:layout_height="783dp"
+        android:layout_height="655dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
