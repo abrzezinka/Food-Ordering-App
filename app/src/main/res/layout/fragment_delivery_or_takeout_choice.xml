@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:circularflow_defaultRadius="20dp"
     app:circularflow_radiusInDP="20dp"
-    tools:context=".DeliveryOrTakeoutChoice">
+    tools:context=".DeliveryOrTakeoutChoice"
+    android:background="@drawable/gradient_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

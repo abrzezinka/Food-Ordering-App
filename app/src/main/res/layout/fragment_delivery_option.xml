@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".DeliveryOption">
+    tools:context=".DeliveryOption"
+    android:background="@drawable/gradient_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,9 +22,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Dane Osobowe"
+                android:text="DANE OSOBOWE"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -36,7 +38,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginTop="10dp"
-                    android:hint="Imie" />
+                    android:hint="Imie"
+                    android:background="@drawable/background_of_input"
+                    />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -44,14 +49,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/lastName_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Nazwisko" />
+                    android:hint="Nazwisko"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +71,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="e-mail" />
+                    android:hint="e-mail"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -77,7 +85,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Numer telefonu" />
+                    android:hint="Numer telefonu"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -86,9 +95,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Adres"
+                android:text="ADRES"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -102,7 +112,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Ulica" />
+                    android:hint="Ulica"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,7 +126,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Numer domu" />
+                    android:hint="Numer domu"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -129,7 +141,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Numer mieszkania" />
+                    android:hint="Numer mieszkania"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -141,7 +154,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Kod pocztowy" />
+                    android:hint="Kod pocztowy"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +167,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:hint="Miasto" />
+                    android:hint="Miasto"
+                    android:background="@drawable/background_of_input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
@@ -163,7 +178,8 @@
                 android:layout_margin="10dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="dodatkowe informacje"
+                android:hint="Dodatkowe informacje"
+                android:background="@drawable/background_of_input"
                 android:inputType="textMultiLine"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 

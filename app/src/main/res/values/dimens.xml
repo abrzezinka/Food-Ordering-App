@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="corner_radius_small">12</dimen>
+    <dimen name="corner_radius_small">12dp</dimen>
     <dimen name="corner_radius_big">24dp</dimen>
     <dimen name="corner_radius_large">32dp</dimen>
 
