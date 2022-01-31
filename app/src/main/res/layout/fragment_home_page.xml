@@ -4,18 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.HomePage" >
+    android:background="@drawable/gradient_background"
+    tools:context=".fragments.HomePage">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="425dp"
+        android:layout_marginTop="304dp"
+        android:background="@drawable/background_home_page"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="@dimen/home_page_button_width"
+        android:layout_height="@dimen/home_page_button_height"
+        android:layout_marginTop="416dp"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="screen"
+        android:text="Menu"
+        android:textColor="@color/main_color"
+        app:cornerRadius="@dimen/corner_radius_small"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="@dimen/home_page_button_width"
+        android:layout_height="@dimen/home_page_button_height"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:text="zamów"
+        android:textColor="@color/main_color"
+        app:cornerRadius="@dimen/corner_radius_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="306dp"
+        android:layout_height="286dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/logo_foodie"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
