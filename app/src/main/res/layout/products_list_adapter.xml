@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
     android:layout_height="180dp"
+    android:id="@+id/productsListAdapterLayout"
     android:background="@drawable/background_of_images">
 
     <ImageView
