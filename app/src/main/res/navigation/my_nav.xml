@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_home_page" >
         <action
             android:id="@+id/action_homePage_to_cathegoriesList"
-            app:destination="@id/cathegoriesList" />
+            app:destination="@id/cathegoriesList" >
+        <argument
+            android:name="IsOrder"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        </action>
         <action
             android:id="@+id/action_homePage_to_deliveryOrTakeoutChoice"
             app:destination="@id/deliveryOrTakeoutChoice" />
@@ -27,8 +32,13 @@
             app:destination="@id/productsList" />
         <argument
             android:name="IsOrder"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            app:argType="boolean"/>
+        <action
+            android:id="@+id/action_cathegoriesList_to_deliveryOption"
+            app:destination="@id/deliveryOption" />
+        <action
+            android:id="@+id/action_cathegoriesList_to_takeawayOption"
+            app:destination="@id/takeawayOption" />
     </fragment>
     <fragment
         android:id="@+id/deliveryOrTakeoutChoice"
@@ -41,6 +51,9 @@
         <action
             android:id="@+id/action_deliveryOrTakeoutChoice_to_deliveryOption"
             app:destination="@id/deliveryOption" />
+        <action
+            android:id="@+id/action_deliveryOrTakeoutChoice_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/takeawayOption"
@@ -49,7 +62,18 @@
         tools:layout="@layout/fragment_takeaway_option" >
         <action
             android:id="@+id/action_takeawayOption_to_cathegoriesList"
-            app:destination="@id/cathegoriesList" />
+            app:destination="@id/cathegoriesList" >
+        <argument
+            android:name="IsOrder"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        </action>
+        <action
+            android:id="@+id/action_takeawayOption_to_deliveryOrTakeoutChoice"
+            app:destination="@id/deliveryOrTakeoutChoice" />
+        <action
+            android:id="@+id/action_takeawayOption_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
     <fragment
         android:id="@+id/deliveryOption"
@@ -58,7 +82,15 @@
         tools:layout="@layout/fragment_delivery_option">
         <action
             android:id="@+id/action_deliveryOption_to_cathegoriesList"
-            app:destination="@id/cathegoriesList" />
+            app:destination="@id/cathegoriesList" >
+        <argument
+            android:name="IsOrder"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        </action>
+        <action
+            android:id="@+id/action_deliveryOption_to_deliveryOrTakeoutChoice"
+            app:destination="@id/deliveryOrTakeoutChoice" />
     </fragment>
     <fragment
         android:id="@+id/productsList"
@@ -68,5 +100,8 @@
             android:name="IsOrder"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_productsList_to_cathegoriesList"
+            app:destination="@id/cathegoriesList" />
     </fragment>
 </navigation>
