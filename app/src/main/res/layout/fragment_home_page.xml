@@ -7,6 +7,28 @@
     android:background="@drawable/gradient_background"
     tools:context=".fragments.HomePage">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Foodie"
+        app:titleMarginStart="30dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="425dp"
@@ -18,7 +40,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/home_to_menu"
         android:layout_width="@dimen/home_page_button_width"
         android:layout_height="@dimen/home_page_button_height"
         android:layout_marginTop="416dp"
@@ -35,7 +57,7 @@
         app:strokeWidth="1dp" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/home_to_order"
         android:layout_width="@dimen/home_page_button_width"
         android:layout_height="@dimen/home_page_button_height"
         android:layout_marginTop="8dp"
@@ -46,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/home_to_menu"
         app:strokeColor="@color/main_color"
         app:strokeWidth="1dp" />
 

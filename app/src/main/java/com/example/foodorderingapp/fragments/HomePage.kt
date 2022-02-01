@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toolbar
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodorderingapp.R
 import com.example.foodorderingapp.databinding.FragmentHomePageBinding
 
 class HomePage : Fragment() {
@@ -19,9 +23,25 @@ class HomePage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //val view = inflater.inflate(R.layout.activity_main, container, false)
+        //val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
         // Inflate the layout for this fragment
         _binding =  FragmentHomePageBinding.inflate(inflater, container, false)
 
         return binding.root
+    }
+    override fun onViewCreated(view:View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Button>(R.id.home_to_menu).apply {
+            setOnClickListener {
+                view.findNavController().navigate(R.id.action_homePage_to_cathegoriesList)
+            }
+        }
+        view.findViewById<Button>(R.id.home_to_order).apply {
+            setOnClickListener {
+                view.findNavController().navigate(R.id.action_homePage_to_deliveryOrTakeoutChoice)
+            }
+        }
     }
 }
