@@ -28,6 +28,9 @@
         android:label="fragment_cathegories_list"
         tools:layout="@layout/fragment_cathegories_list" >
         <action
+            android:id="@+id/action_cathegoriesList_to_homePage"
+            app:destination="@id/homePage" />
+        <action
             android:id="@+id/action_cathegoriesList_to_productsList"
             app:destination="@id/productsList" />
         <argument
@@ -40,6 +43,10 @@
         <action
             android:id="@+id/action_cathegoriesList_to_takeawayOption"
             app:destination="@id/takeawayOption" />
+        <action
+            android:id="@+id/action_cathegoriesList_to_deliveryOrTakeoutChoice"
+            app:destination="@id/deliveryOrTakeoutChoice" />
+
     </fragment>
     <fragment
         android:id="@+id/deliveryOrTakeoutChoice"
