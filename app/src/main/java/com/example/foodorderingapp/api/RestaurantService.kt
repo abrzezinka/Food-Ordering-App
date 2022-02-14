@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface RestaurantService {
 
-    @GET(value = "todo")
+    @GET(value = "api/restaurants")
     fun getRestaurantsList(): Call<List<Restaurant>>
 }

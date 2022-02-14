@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toolbar
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodorderingapp.viewmodel.RestaurantViewModel
 
 
 class DeliveryOption : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var viewModel: RestaurantViewModel
+    //private val layoutManager: LinearLayoutManager(requireCOntext())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +36,5 @@ class DeliveryOption : Fragment() {
         return inflater.inflate(R.layout.fragment_delivery_option, container, false)
     }
 
-    override fun onViewCreated(view:View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.button_save_data).apply {
-            setOnClickListener {
-                view.findNavController().navigate(R.id.action_deliveryOption_to_cathegoriesList)
-            }
-        }
-    }
+
 }

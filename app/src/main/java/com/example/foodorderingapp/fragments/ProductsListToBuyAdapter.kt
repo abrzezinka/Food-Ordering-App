@@ -14,26 +14,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
+import com.example.foodorderingapp.model.Order
+import com.example.foodorderingapp.model.Product
 
-class ProductsListToBuyAdapter(private val view: View,
-                          private val viewModel: ProductViewModel,
-                          private val context: Context?,
-                          private val arg: Bundle?)
-    : RecyclerView.Adapter<ProductsListToBuyAdapter.product_list_to_buy_holder>(){
+class ProductsListToBuyAdapter() : RecyclerView.Adapter<ProductsListToBuyAdapter.product_list_to_buy_holder>(){
 
-    //private var productsList = emptyList<Int>()
-
-    //class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    //val desc_textViewProductsList: TextView
-    //val imageViewProductsList: ImageView
-    //val layout: ConstraintLayout
-
-    //init{
-    //    desc_textViewProductsList = itemView.findViewById(R.id.product_txt)
-    //    imageViewProductsList = itemView.findViewById(R.id.product_image)
-    //    layout = itemView.findViewById(R.id.productsListAdapterLayout)
-    //}
-    //}
+    private var productsList = emptyList<Product>()
 
     inner class product_list_to_buy_holder(view: View) : RecyclerView.ViewHolder(view) {
         val product_txt: TextView = view.findViewById(R.id.product_txt)
@@ -48,17 +34,23 @@ class ProductsListToBuyAdapter(private val view: View,
     }
 
     override fun onBindViewHolder(holder: product_list_to_buy_holder, position: Int) {
-        holder.product_txt.text = viewModel.products.value?.get(position)?.name//todo set name of category and image
+        holder.product_txt.text = productsList[position].name
         //holder.product_image = viewModel.products.value?.get(position)?.image//get image//todo getting images?
-        holder.product_price.text = viewModel.products.value?.get(position)?.price
+        holder.product_price.text = productsList[position].prize.toString()
 
+        //todo add viewmodel to order
         holder.button_add.setOnClickListener{
-            //todo adding item do cart
+            Order.addProduct(productsList[position])
         }
 
     }
 
     override fun getItemCount(): Int {
-        return viewModel.products.value?.size?:0
+        return productsList.size
+    }
+
+    fun setData(products: List<Product>){
+        this.productsList = products
+        notifyDataSetChanged()
     }
 }

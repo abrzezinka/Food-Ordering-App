@@ -31,8 +31,9 @@
             android:id="@+id/action_cathegoriesList_to_productsList"
             app:destination="@id/productsList" />
         <argument
-            android:name="IsOrder"
-            app:argType="boolean"/>
+            android:name="isAnOrder"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_cathegoriesList_to_deliveryOption"
             app:destination="@id/deliveryOption" />
@@ -97,7 +98,7 @@
         android:name="com.example.foodorderingapp.fragments.ProductsList"
         android:label="fragment_products_list">
         <argument
-            android:name="IsOrder"
+            android:name="isOrder"
             android:defaultValue="false"
             app:argType="boolean" />
         <action

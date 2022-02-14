@@ -13,26 +13,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
+import com.example.foodorderingapp.model.Product
 
-class ProductsListAdapter(private val view: View,
-                          private val viewModel: ProductViewModel,
-                          private val context: Context?,
-                          private val arg: Bundle?)
-    : RecyclerView.Adapter<ProductsListAdapter.product_list_holder>(){
+class ProductsListAdapter() : RecyclerView.Adapter<ProductsListAdapter.product_list_holder>(){
 
-    //private var productsList = emptyList<Int>()
-
-    //class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        //val desc_textViewProductsList: TextView
-        //val imageViewProductsList: ImageView
-        //val layout: ConstraintLayout
-
-        //init{
-        //    desc_textViewProductsList = itemView.findViewById(R.id.product_txt)
-        //    imageViewProductsList = itemView.findViewById(R.id.product_image)
-        //    layout = itemView.findViewById(R.id.productsListAdapterLayout)
-        //}
-    //}
+    private var productsList = emptyList<Product>()
 
     inner class product_list_holder(view: View) : RecyclerView.ViewHolder(view) {
         val product_txt: TextView = view.findViewById(R.id.product_txt)
@@ -45,11 +30,17 @@ class ProductsListAdapter(private val view: View,
     }
 
    override fun onBindViewHolder(holder: product_list_holder, position: Int) {
-        holder.product_txt.text = viewModel.products.value?.get(position)?.name//todo set name of category and image
+       val currentItem = productsList[position]
+       holder.product_txt.text = currentItem.name //todo set name of category and image
         //holder.product_image = viewModel.products.value?.get(position)?.image//get image//todo getting images?
     }
 
     override fun getItemCount(): Int {
-        return viewModel.products.value?.size?:0
+        return productsList.size
+    }
+
+    fun setData(products: List<Product>){
+        this.productsList = products
+        notifyDataSetChanged()
     }
 }

@@ -76,9 +76,9 @@
         android:id="@+id/imageView4"
         android:layout_width="306dp"
         android:layout_height="286dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/logo_foodie"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
