@@ -1,12 +1,10 @@
 package com.example.foodorderingapp.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -43,15 +41,6 @@ class ProductsList : Fragment() {
         productsView.layoutManager = layoutManager
 
         val view = inflater.inflate(R.layout.fragment_products_list, container, false)
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_products)
-
-        toolbar.inflateMenu(R.menu.menu_back)
-        toolbar.setOnMenuItemClickListener {
-            if(it.itemId==R.id.back_button){
-                view.findNavController().navigate(R.id.action_productsList_to_cathegoriesList)
-            }
-            true
-        }
 
         when(_isOrder){
             true -> {
@@ -70,7 +59,27 @@ class ProductsList : Fragment() {
                 })
             }
         }
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_back_and_next, menu)
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.back_button -> {
+                view?.findNavController()?.navigate(R.id.action_productsList_to_cathegoriesList)
+                true
+            }
+            R.id.buy_button -> {
+                //view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_homePage) todo set destination to cart
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
