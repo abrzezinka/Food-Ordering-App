@@ -2,13 +2,10 @@ package com.example.foodorderingapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.foodorderingapp.api.ProductService
 import com.example.foodorderingapp.api.RestaurantService
 import com.example.foodorderingapp.api.RetrofitClient
 import com.example.foodorderingapp.model.Restaurant
 import com.example.foodorderingapp.repositories.RestaurantRepository
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

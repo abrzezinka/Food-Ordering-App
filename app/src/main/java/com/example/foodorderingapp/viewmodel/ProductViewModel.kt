@@ -31,6 +31,10 @@ class ProductViewModel: ViewModel(){
         return readAllData
     }
 
+    fun getCategoryLiveDataObserver(): MutableLiveData<List<Product>>{
+        return readCategoryData
+    }
+
     fun productsDataCall(){
         var call = repository.getProductsList()
         call.enqueue(object: Callback<List<Product>> {

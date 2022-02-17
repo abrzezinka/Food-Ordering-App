@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
 import com.example.foodorderingapp.model.Category
@@ -19,7 +18,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.category_list_h
 
     inner class category_list_holder(view: View) : RecyclerView.ViewHolder(view) {
         val category_txt: TextView = view.findViewById(R.id.category_txt)
-        val category_image: ImageView = view.findViewById(R.id.category_image)
+        val category_img: ImageView = view.findViewById(R.id.category_image)
         val adapterLayout: ConstraintLayout = view.findViewById(R.id.categoriesAdapterLayout)
     }
 
@@ -32,10 +31,8 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.category_list_h
         val currentItem = _categoriesList[position]
         holder.category_txt.text = currentItem.name
 
-        // todo implement image
-
          holder.adapterLayout.setOnClickListener {
-             val action = CategoriesListDirections.actionCathegoriesListToProductsList(_isOrder)
+             val action = CategoriesListDirections.actionCathegoriesListToProductsList(isOrder = _isOrder, category = currentItem)
              holder.itemView.findNavController().navigate(action)
          }
     }

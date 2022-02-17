@@ -10,5 +10,5 @@ interface ProductService {
     fun getProductsList(): Call<List<Product>>
 
     @GET("api/dishes/?")
-    fun getProductsFromCategory(@Query("category_name")category: String): Call<List<Product>>
+    fun getProductsFromCategory(@Query("category")category: String): Call<List<Product>>
 }

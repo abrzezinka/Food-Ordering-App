@@ -1,10 +1,18 @@
 package com.example.foodorderingapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodorderingapp.databinding.FragmentTakeawayOptionBinding
+import com.example.foodorderingapp.fragments.CategoriesAdapter
+import com.example.foodorderingapp.fragments.RestaurantsListAdapter
 import com.example.foodorderingapp.viewmodel.RestaurantViewModel
 
 class TakeawayOption : Fragment() {
@@ -17,9 +25,26 @@ class TakeawayOption : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentTakeawayOptionBinding.inflate(inflater, container, false)
+
+        val restaurantsView = binding.restaurantsRecyclerView
+        restaurantsView.layoutManager = LinearLayoutManager(requireContext())
+        val adapter =  RestaurantsListAdapter()
+        restaurantsView.adapter = adapter
+
+        viewModel = ViewModelProvider(this)[RestaurantViewModel::class.java]
+
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                adapter.setData(it)
+                adapter.notifyDataSetChanged()
+            } else{
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            }
+        })
+        viewModel.getRestaurantsDataCall()
 
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)

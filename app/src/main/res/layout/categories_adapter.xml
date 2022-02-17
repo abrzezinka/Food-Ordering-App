@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categoriesAdapterLayout"
     android:layout_width="150dp"
     android:layout_height="180dp"
-    android:id="@+id/categoriesAdapterLayout"
+    android:layout_margin="8dp"
     android:background="@drawable/background_of_images">
 
     <TextView
@@ -14,8 +15,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:text="Opis"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_foodie"
         tools:srcCompat="@drawable/logo_foodie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

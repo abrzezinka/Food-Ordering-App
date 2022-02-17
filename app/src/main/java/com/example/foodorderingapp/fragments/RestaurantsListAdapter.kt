@@ -1,5 +1,6 @@
 package com.example.foodorderingapp.fragments
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
 import com.example.foodorderingapp.TakeawayOptionDirections
 import com.example.foodorderingapp.model.Restaurant
+import com.example.foodorderingapp.model.ShoppingCard
 
 class RestaurantsListAdapter(): RecyclerView.Adapter<RestaurantsListAdapter.MyViewHolder>() {
 
     private var restaurantsList = emptyList<Restaurant>()
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById(R.id.restaurant_txt)
+        var cityName: TextView = itemView.findViewById(R.id.city_txt)
+        var streetName: TextView = itemView.findViewById(R.id.street_txt)
+        var code: TextView = itemView.findViewById(R.id.code_txt)
+
         val adapterLayout: ConstraintLayout = itemView.findViewById(R.id.restaurantListAdapterLayout)
     }
 
@@ -28,8 +33,13 @@ class RestaurantsListAdapter(): RecyclerView.Adapter<RestaurantsListAdapter.MyVi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = restaurantsList[position]
+        holder.cityName.text = currentItem.city
+        holder.streetName.text = currentItem.address
+        holder.code.text = currentItem.code
+
         holder.adapterLayout.setOnClickListener {
-            val action = TakeawayOptionDirections.actionTakeawayOptionToCathegoriesList(true)
+            val action = TakeawayOptionDirections.actionTakeawayOptionToCathegoriesList(isAnOrder = true)
+            ShoppingCard.addRestaurant(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
 

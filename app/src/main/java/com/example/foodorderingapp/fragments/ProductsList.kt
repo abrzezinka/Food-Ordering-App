@@ -1,10 +1,13 @@
 package com.example.foodorderingapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -40,23 +43,34 @@ class ProductsList : Fragment() {
         layoutManager = GridLayoutManager(activity, 2)
         productsView.layoutManager = layoutManager
 
-        val view = inflater.inflate(R.layout.fragment_products_list, container, false)
-
         when(_isOrder){
             true -> {
                 val adapter = ProductsListToBuyAdapter()
                 productsView.adapter = adapter
-                viewModel.readAllData.observe(viewLifecycleOwner, Observer {
-                    product -> adapter.setData(product)
+                viewModel.getCategoryLiveDataObserver().observe(viewLifecycleOwner, Observer {
+                    if(it != null){
+
+                        adapter.setData(it)
+                        adapter.notifyDataSetChanged()
+                    } else{
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    }
                 })
+                viewModel.getProductsFromCategoryCall(args.category)
             }
 
             false -> {
                 val adapter = ProductsListAdapter()
                 productsView.adapter = adapter
-                viewModel.readAllData.observe(viewLifecycleOwner, Observer {
-                        product -> adapter.setData(product)
+                viewModel.getCategoryLiveDataObserver().observe(viewLifecycleOwner, Observer {
+                    if(it != null){
+                        adapter.setData(it)
+                        adapter.notifyDataSetChanged()
+                    } else{
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    }
                 })
+                viewModel.getProductsFromCategoryCall(args.category)
             }
         }
         super.onCreate(savedInstanceState)
@@ -64,6 +78,7 @@ class ProductsList : Fragment() {
 
         return binding.root
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_back_and_next, menu)
         super.onCreateOptionsMenu(menu, inflater);
@@ -76,7 +91,7 @@ class ProductsList : Fragment() {
                 true
             }
             R.id.buy_button -> {
-                //view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_homePage) todo set destination to cart
+                view?.findNavController()?.navigate(R.id.action_productsList_to_shoppingCart)
                 true
             }
             else -> super.onOptionsItemSelected(item)

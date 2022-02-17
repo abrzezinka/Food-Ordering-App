@@ -13,8 +13,6 @@ class DeliveryOrTakeoutChoice : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_delivery_or_takeout_choice, container, false)
-
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 

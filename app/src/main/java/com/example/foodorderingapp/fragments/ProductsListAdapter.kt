@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
 import com.example.foodorderingapp.model.Product
+import com.squareup.picasso.Picasso
 
 class ProductsListAdapter() : RecyclerView.Adapter<ProductsListAdapter.product_list_holder>(){
 
@@ -31,8 +32,9 @@ class ProductsListAdapter() : RecyclerView.Adapter<ProductsListAdapter.product_l
 
    override fun onBindViewHolder(holder: product_list_holder, position: Int) {
        val currentItem = productsList[position]
-       holder.product_txt.text = currentItem.name //todo set name of category and image
-        //holder.product_image = viewModel.products.value?.get(position)?.image//get image//todo getting images?
+       holder.product_txt.text = currentItem.name
+       Picasso.get().load(currentItem.image).into(holder.product_image)
+
     }
 
     override fun getItemCount(): Int {

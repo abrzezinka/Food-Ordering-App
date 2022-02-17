@@ -111,5 +111,23 @@
         <action
             android:id="@+id/action_productsList_to_cathegoriesList"
             app:destination="@id/cathegoriesList" />
+        <argument
+            android:name="category"
+            app:argType="com.example.foodorderingapp.model.Category" />
+        <action
+            android:id="@+id/action_productsList_to_shoppingCart"
+            app:destination="@id/shoppingCart" />
     </fragment>
+    <fragment
+        android:id="@+id/shoppingCart"
+        android:name="com.example.foodorderingapp.fragments.ShoppingCart"
+        android:label="fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCart_to_productsList"
+            app:destination="@id/productsList" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCart2"
+        android:name="com.example.foodorderingapp.fragments.ShoppingCart"
+        android:label="ShoppingCart" />
 </navigation>

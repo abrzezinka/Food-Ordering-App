@@ -35,7 +35,6 @@ class CategoriesList : Fragment() {
         _binding =  FragmentCathegoriesListBinding.inflate(inflater, container, false)
 
         val _isOrder = args.isAnOrder
-        val view = inflater.inflate(R.layout.fragment_cathegories_list, container, false)
 
         val categoriesView = binding.cathegoriesRecyclerView
         val adapter = CategoriesAdapter()
@@ -49,8 +48,16 @@ class CategoriesList : Fragment() {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 
-        viewModel.readAllData.observe(viewLifecycleOwner, Observer{
-                            category -> adapter.setData(category, _isOrder)})
+
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                adapter.setData(it, _isOrder)
+                adapter.notifyDataSetChanged()
+            } else{
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            }
+        })
+        viewModel.categoriesDataCall()
 
         return binding.root
     }
@@ -64,7 +71,7 @@ class CategoriesList : Fragment() {
         val _isOrder = args.isAnOrder
         return when (item.itemId) {
             R.id.back_button -> {
-                if(_isOrder==true) view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_deliveryOrTakeoutChoice)
+                if(_isOrder) view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_deliveryOrTakeoutChoice)
                 else view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_homePage)
                 true
             }

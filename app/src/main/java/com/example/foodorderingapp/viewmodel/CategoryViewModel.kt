@@ -6,8 +6,6 @@ import com.example.foodorderingapp.api.CategoryService
 import com.example.foodorderingapp.api.RetrofitClient
 import com.example.foodorderingapp.model.Category
 import com.example.foodorderingapp.repositories.CategoryRepository
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import retrofit2.*
 
 class CategoryViewModel(): ViewModel() {
@@ -29,12 +27,11 @@ class CategoryViewModel(): ViewModel() {
     }
 
     fun categoriesDataCall(){
-        var call = repository.getCategoriesList()
+        val call = repository.getCategoriesList()
         call.enqueue(object: Callback<List<Category>> {
             override fun onFailure(call: Call<List<Category>>, t: Throwable){
                 readAllData.postValue(null)
             }
-
             override fun onResponse(
                 call: Call<List<Category>>,
                 response: Response<List<Category>>
