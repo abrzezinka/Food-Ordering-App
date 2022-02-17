@@ -1,12 +1,10 @@
 package com.example.foodorderingapp.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,11 +20,8 @@ class HomePage : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        //val view = inflater.inflate(R.layout.activity_main, container, false)
-        //val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+    ): View {
 
-        // Inflate the layout for this fragment
         _binding =  FragmentHomePageBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -43,5 +38,10 @@ class HomePage : Fragment() {
                 view.findNavController().navigate(R.id.action_homePage_to_deliveryOrTakeoutChoice)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

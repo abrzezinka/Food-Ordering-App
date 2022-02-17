@@ -13,19 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/myToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Foodie"
-        app:titleMarginStart="30dp"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -76,9 +63,9 @@
         android:id="@+id/imageView4"
         android:layout_width="306dp"
         android:layout_height="286dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/logo_foodie"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

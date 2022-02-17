@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface CategoryService {
 
-    @GET(value = "todo")
+    @GET(value = "api/dish-categories")
     fun getCategoriesList(): Call<List<Category>>
 }

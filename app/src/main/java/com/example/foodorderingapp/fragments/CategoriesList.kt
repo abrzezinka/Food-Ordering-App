@@ -1,29 +1,30 @@
 package com.example.foodorderingapp.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderingapp.R
 import com.example.foodorderingapp.databinding.FragmentCathegoriesListBinding
-import com.example.foodorderingapp.fragments.CategoriesAdapter
+import com.example.foodorderingapp.viewmodel.CategoryViewModel
+
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 
 
 class CategoriesList : Fragment() {
 
+    private val args by navArgs<CategoriesListArgs>()
     private lateinit var viewModel: CategoryViewModel
-
-    //private var layoutManager: GridLayoutManager? = null
-    //private var _binding: FragmentCathegoriesListBinding? = null
-    //private val binding get() = _binding!!
+    private var layoutManager: GridLayoutManager? = null
+    private var _binding: FragmentCathegoriesListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,47 +32,55 @@ class CategoriesList : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        //_binding =  FragmentCathegoriesListBinding.inflate(inflater, container, false)
-        //val cathegoriesView = binding.cathegoriesRecyclerView
-        //layoutManager = GridLayoutManager(activity, 2)
-        //binding.cathegoriesRecyclerView.layoutManager = layoutManager
-        //cathegoriesView.adapter = CategoriesAdapter(layoutManager)
+        _binding =  FragmentCathegoriesListBinding.inflate(inflater, container, false)
 
-        //adding toolbar
-        val view = inflater.inflate(R.layout.fragment_cathegories_list, container, false)
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_categories)
+        val _isOrder = args.isAnOrder
 
-        toolbar.inflateMenu(R.menu.menu_back)
-        toolbar.setOnMenuItemClickListener {
-            if(it.itemId==R.id.back_button){
-                //todo back to delivery or takeaway
-                view.findNavController().navigate(R.id.action_cathegoriesList_to_deliveryOption)
+        val categoriesView = binding.cathegoriesRecyclerView
+        val adapter = CategoriesAdapter()
+        layoutManager = GridLayoutManager(activity, 2)
+        categoriesView.layoutManager = layoutManager
+        categoriesView.adapter = adapter
+
+
+        viewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
+
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                adapter.setData(it, _isOrder)
+                adapter.notifyDataSetChanged()
+            } else{
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
-            true
-        }
+        })
+        viewModel.categoriesDataCall()
 
-        return inflater.inflate(R.layout.fragment_cathegories_list,container,false)
+        return binding.root
     }
-    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
-    }*/
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //categories-> List<Category> in viewmodel
-        viewModel = CategoryViewModel((requireNotNull(this.activity).application))
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_back, menu)
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
-        val category_adapter = CategoriesAdapter(view, viewModel, this.context, arguments)
-
-        viewModel.categories.observe(viewLifecycleOwner) {
-            category_adapter.notifyDataSetChanged()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val _isOrder = args.isAnOrder
+        return when (item.itemId) {
+            R.id.back_button -> {
+                if(_isOrder) view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_deliveryOrTakeoutChoice)
+                else view?.findNavController()?.navigate(R.id.action_cathegoriesList_to_homePage)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
+    }
 
-        val layoutManager = LinearLayoutManager(view.context)
-        view.findViewById<RecyclerView>(R.id.cathegoriesRecyclerView).let {
-            it.adapter = category_adapter
-            it.layoutManager = layoutManager
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

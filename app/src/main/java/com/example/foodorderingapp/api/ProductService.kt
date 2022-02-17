@@ -6,12 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ProductService {
-
-    // TODO ( add endpoint )
-    @GET(value = "todo")
+    @GET(value = "api/dishes")
     fun getProductsList(): Call<List<Product>>
 
-
-    @GET("endpoint/?")
-    fun getProductsFromCategory(@Query("category__name")category: String): Call<List<Product>>
+    @GET("api/dishes/?")
+    fun getProductsFromCategory(@Query("category")category: String): Call<List<Product>>
 }

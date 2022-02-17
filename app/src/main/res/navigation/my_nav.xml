@@ -28,17 +28,25 @@
         android:label="fragment_cathegories_list"
         tools:layout="@layout/fragment_cathegories_list" >
         <action
+            android:id="@+id/action_cathegoriesList_to_homePage"
+            app:destination="@id/homePage" />
+        <action
             android:id="@+id/action_cathegoriesList_to_productsList"
             app:destination="@id/productsList" />
         <argument
-            android:name="IsOrder"
-            app:argType="boolean"/>
+            android:name="isAnOrder"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_cathegoriesList_to_deliveryOption"
             app:destination="@id/deliveryOption" />
         <action
             android:id="@+id/action_cathegoriesList_to_takeawayOption"
             app:destination="@id/takeawayOption" />
+        <action
+            android:id="@+id/action_cathegoriesList_to_deliveryOrTakeoutChoice"
+            app:destination="@id/deliveryOrTakeoutChoice" />
+
     </fragment>
     <fragment
         android:id="@+id/deliveryOrTakeoutChoice"
@@ -97,11 +105,29 @@
         android:name="com.example.foodorderingapp.fragments.ProductsList"
         android:label="fragment_products_list">
         <argument
-            android:name="IsOrder"
+            android:name="isOrder"
             android:defaultValue="false"
             app:argType="boolean" />
         <action
             android:id="@+id/action_productsList_to_cathegoriesList"
             app:destination="@id/cathegoriesList" />
+        <argument
+            android:name="category"
+            app:argType="com.example.foodorderingapp.model.Category" />
+        <action
+            android:id="@+id/action_productsList_to_shoppingCart"
+            app:destination="@id/shoppingCart" />
     </fragment>
+    <fragment
+        android:id="@+id/shoppingCart"
+        android:name="com.example.foodorderingapp.fragments.ShoppingCart"
+        android:label="fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCart_to_productsList"
+            app:destination="@id/productsList" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCart2"
+        android:name="com.example.foodorderingapp.fragments.ShoppingCart"
+        android:label="ShoppingCart" />
 </navigation>

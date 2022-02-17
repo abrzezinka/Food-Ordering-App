@@ -5,18 +5,21 @@ import androidx.lifecycle.ViewModel
 import com.example.foodorderingapp.api.CategoryService
 import com.example.foodorderingapp.api.RetrofitClient
 import com.example.foodorderingapp.model.Category
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.create
+import com.example.foodorderingapp.repositories.CategoryRepository
+import retrofit2.*
 
-class CategoryViewModel(val categoryService: CategoryService): ViewModel(),KoinComponent {
+class CategoryViewModel(): ViewModel() {
     var readAllData: MutableLiveData<List<Category>>
+    private val retroInstance: Retrofit
+    private val categoryService: CategoryService
+    private val repository: CategoryRepository
 
     init {
         readAllData = MutableLiveData()
+        retroInstance = RetrofitClient.getRetroInstance()
+        categoryService = retroInstance.create(CategoryService::class.java)
+        repository = CategoryRepository(categoryService)
+
     }
 
     fun getLiveDataObserver(): MutableLiveData<List<Category>> {
@@ -24,13 +27,11 @@ class CategoryViewModel(val categoryService: CategoryService): ViewModel(),KoinC
     }
 
     fun categoriesDataCall(){
-        val service: CategoryService by inject()
-        var call = service.getCategoriesList()
+        val call = repository.getCategoriesList()
         call.enqueue(object: Callback<List<Category>> {
             override fun onFailure(call: Call<List<Category>>, t: Throwable){
                 readAllData.postValue(null)
             }
-
             override fun onResponse(
                 call: Call<List<Category>>,
                 response: Response<List<Category>>
