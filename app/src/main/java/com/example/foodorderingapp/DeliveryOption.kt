@@ -87,7 +87,9 @@ class DeliveryOption : Fragment() {
                     //return@setOnClickListener
                 }
                 else{
-                    view.findNavController().navigate(R.id.action_deliveryOption_to_cathegoriesList)
+                    val action = DeliveryOptionDirections.actionDeliveryOptionToCathegoriesList(
+                        isAnOrder = true)
+                    view.findNavController().navigate(action)
                 }
             }
         }
