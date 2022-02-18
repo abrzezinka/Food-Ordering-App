@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".DeliveryOption"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    android:id="@+id/layout_delivery"
+    >
 
 
     <ScrollView
+
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -75,7 +79,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/mail_et"
+                android:id="@+id/email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -145,6 +149,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/flateNumber_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -158,6 +163,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/zipcode_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -171,6 +177,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
