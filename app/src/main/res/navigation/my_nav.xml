@@ -72,7 +72,7 @@
             android:id="@+id/action_takeawayOption_to_cathegoriesList"
             app:destination="@id/cathegoriesList" >
         <argument
-            android:name="IsOrder"
+            android:name="isAnOrder"
             app:argType="boolean"
             android:defaultValue="true" />
         </action>
