@@ -62,7 +62,7 @@ class CategoriesList : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    override fun onCreateOptionsMenu (menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_back, menu)
         super.onCreateOptionsMenu(menu, inflater);
     }
